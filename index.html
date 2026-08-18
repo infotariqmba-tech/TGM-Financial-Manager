@@ -1,0 +1,27 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TGM Financial Manager</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+</head><body>
+<div id="auth" class="auth"><div class="box"><b class="logo">TGM</b><h1>TGM Financial Manager</h1>
+<div class="tabs"><button id="loginTab">Login</button><button id="signupTab">Create account</button></div>
+<form id="authForm"><input id="name" placeholder="Full name" class="signup">
+<input id="email" type="email" placeholder="Email" required><input id="pass" type="password" placeholder="Password" required minlength="6">
+<button>Continue</button></form><p id="msg"></p></div></div>
+<div id="app" class="hide"><header><b>TGM Financial Manager</b><span id="who"></span><button id="logout">Logout</button></header>
+<div class="layout"><nav>
+<button data-p="dash">Dashboard</button><button data-p="company">Company</button><button data-p="accounts">Accounts</button>
+<button data-p="contacts">Contacts</button><button data-p="projects">Projects</button><button data-p="journal">Journal</button><button data-p="reports">Reports</button>
+</nav><main>
+<section id="dash"><h2>Dashboard</h2><div class="cards"><div>Debit<strong id="debit">0</strong></div><div>Credit<strong id="credit">0</strong></div><div>Accounts<strong id="acount">0</strong></div><div>Projects<strong id="pcount">0</strong></div></div><div class="panel" id="recent"></div></section>
+<section id="company" class="hide"><h2>Company Setup</h2><div class="panel"><form id="companyForm"><input id="cname" placeholder="Company name" required><select id="currency"><option>PKR</option><option>USD</option><option>EUR</option><option>GBP</option></select><button>Save company</button></form></div></section>
+<section id="accounts" class="hide"><h2>Chart of Accounts</h2><div class="panel"><form id="accountForm"><input id="acode" placeholder="Code" required><input id="aname" placeholder="Account name" required><select id="atype"><option>asset</option><option>liability</option><option>equity</option><option>income</option><option>expense</option></select><button>Add</button></form></div><div class="panel" id="accountsTable"></div></section>
+<section id="contacts" class="hide"><h2>Customers / Suppliers</h2><div class="panel"><form id="contactForm"><input id="ctname" placeholder="Name" required><select id="cttype"><option>customer</option><option>supplier</option><option>other</option></select><input id="phone" placeholder="Phone"><input id="ctemail" placeholder="Email"><button>Add</button></form></div><div class="panel" id="contactsTable"></div></section>
+<section id="projects" class="hide"><h2>Projects</h2><div class="panel"><form id="projectForm"><input id="pcode" placeholder="Code"><input id="pname" placeholder="Project name" required><input id="budget" type="number" step=".01" placeholder="Budget"><button>Add</button></form></div><div class="panel" id="projectsTable"></div></section>
+<section id="journal" class="hide"><h2>Journal Entry</h2><div class="panel"><form id="journalForm"><div class="grid"><input id="vno" placeholder="Voucher No" required><select id="vtype"><option>journal</option><option>receipt</option><option>payment</option><option>contra</option></select><input id="vdate" type="date" required><input id="narr" placeholder="Narration"></div><div id="lines"></div><button type="button" id="addLine">+ Line</button><p>Debit: <b id="td">0</b> &nbsp; Credit: <b id="tc">0</b></p><button>Save voucher</button></form><p id="jmsg"></p></div></section>
+<section id="reports" class="hide"><h2>Trial Balance</h2><div class="panel"><button id="refresh">Refresh</button><div id="report"></div></div></section>
+</main></div></div>
+<script src="app.js"></script></body></html>
